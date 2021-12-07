@@ -17,7 +17,6 @@
                             <th scope="col">Description</th>
                             <th scope="col">Specification</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Total Pieces</th>
                             <th scope="col">Order Status</th>
                         </tr>
                         </thead>
@@ -29,7 +28,6 @@
                             <td>{{ item_active.item.description }}</td>
                             <td>{{ item_active.item.instructions }}</td>
                             <td>{{ item_active.item.price }}</td>
-                            <td>{{ item_active.item.pieces }} pieces</td>
                             <td>{{ item_active.status }}</td>
                         </tr>
                             {% endfor %}
@@ -55,7 +53,6 @@
                             <th scope="col">Description</th>
                             <th scope="col">Specification</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Total Pieces</th>
                             <th scope="col">Order Status</th>
                             <th scope="col">Delivery Date</th>
                         </tr>
@@ -68,7 +65,6 @@
                             <td>{{ cart.item.description }}</td>
                             <td>{{ cart.item.instructions }}</td>
                             <td>{{ cart.item.price }}</td>
-                            <td>{{ cart.item.pieces }} pieces</td>
                             <td>{{ cart.status }}</td>
                             <td>{{ cart.delivery_date }}</td>
                         </tr>

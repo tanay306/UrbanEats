@@ -13,7 +13,6 @@
                         <th scope="col">Decription</th>
                         <th scope="col">Instructions</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Pieces</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -26,7 +25,6 @@
                         <td>{{ item.description }}</td>
                         <td>{{ item.instructions }}</td>
                         <td>{{ item.price }}</td>
-                        <td>{{ item.pieces }} pieces</td>
                         <td><a class="btn btn-success" href="{% url 'main:item-update' item.slug %}">Update</a></td>
                         <td><a class="btn btn-danger" href="{% url 'main:item-delete' item.slug %}">Delete</a></td>
                     </tr>

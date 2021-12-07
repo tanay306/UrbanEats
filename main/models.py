@@ -20,7 +20,6 @@ class Item(models.Model):
     title = models.CharField(max_length=150)
     description = models.CharField(max_length=250,blank=True)
     price = models.FloatField()
-    pieces = models.IntegerField(default=6)
     instructions = models.CharField(max_length=250,default="Jain Option Available")
     image = models.ImageField(default='default.png', upload_to='images/')
     labels = models.CharField(max_length=25, choices=LABELS, blank=True)

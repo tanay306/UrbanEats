@@ -9,7 +9,6 @@ class ItemAdmin(admin.ModelAdmin):
         ("Image", {'fields': ["image"]}),
         ("Description", {'fields': ["description"]}),
         ("Price", {'fields': ["price"]}),
-        ("Pieces", {'fields': ["pieces"]}),
         ("Instructions", {'fields': ["instructions"]}),
         ("Labels", {'fields': ["labels"]}),
         ("Label Colour", {'fields': ["label_colour"]}),

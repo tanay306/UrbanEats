@@ -43,7 +43,7 @@ def add_reviews(request):
 
 class ItemCreateView(LoginRequiredMixin, CreateView):
     model = Item
-    fields = ['title', 'image', 'description', 'price', 'pieces', 'instructions', 'labels', 'label_colour', 'slug']
+    fields = ['title', 'image', 'description', 'price', 'instructions', 'labels', 'label_colour', 'slug']
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
@@ -51,7 +51,7 @@ class ItemCreateView(LoginRequiredMixin, CreateView):
 
 class ItemUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Item
-    fields = ['title', 'image', 'description', 'price', 'pieces', 'instructions', 'labels', 'label_colour', 'slug']
+    fields = ['title', 'image', 'description', 'price', 'instructions', 'labels', 'label_colour', 'slug']
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
@@ -89,15 +89,12 @@ def get_cart_items(request):
     cart_items = CartItems.objects.filter(user=request.user,ordered=False)
     bill = cart_items.aggregate(Sum('item__price'))
     number = cart_items.aggregate(Sum('quantity'))
-    pieces = cart_items.aggregate(Sum('item__pieces'))
     total = bill.get("item__price__sum")
     count = number.get("quantity__sum")
-    total_pieces = pieces.get("item__pieces__sum")
     context = {
         'cart_items':cart_items,
         'total': total,
         'count': count,
-        'total_pieces': total_pieces
     }
     return render(request, 'main/cart.html', context)
 
@@ -125,16 +122,13 @@ def order_details(request):
     cart_items = CartItems.objects.filter(user=request.user, ordered=True,status="Delivered").order_by('-ordered_date')
     bill = items.aggregate(Sum('item__price'))
     number = items.aggregate(Sum('quantity'))
-    pieces = items.aggregate(Sum('item__pieces'))
     total = bill.get("item__price__sum")
     count = number.get("quantity__sum")
-    total_pieces = pieces.get("item__pieces__sum")
     context = {
         'items':items,
         'cart_items':cart_items,
         'total': total,
         'count': count,
-        'total_pieces': total_pieces
     }
     return render(request, 'main/order_details.html', context)
 
