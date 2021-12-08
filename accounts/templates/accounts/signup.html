@@ -1,8 +1,10 @@
 {% extends "main/layout.html" %}
 {% load crispy_forms_tags %} 
 {% block content %}
-<div class="container">
-    <h1>Signup</h1>
+<div class="container"  style="display: flex;justify-content: center;">
+    <div>
+    <h1 style="
+    text-align: center;">Signup</h1>
     <div class="form-border">
         <form class="site-form" action="{% url 'accounts:signup' %}" method="post">
             {% csrf_token %}
@@ -10,5 +12,6 @@
             <input type="submit" value="Signup" class="btn">
         </form>
     </div>
+</div>
 </div>
 {% endblock %}

@@ -1,10 +1,12 @@
 {% extends "main/layout.html" %}
 {% load crispy_forms_tags %} 
 {% block content %}
-<div class="container">
-    <h1>Login</h1>
+<div class="container" style="display: flex;justify-content: center;">
+    <div>
+    <h1 style="
+    text-align: center;">Login</h1>
     <div class="form-border">
-        <form class="site-form" action="{% url 'accounts:login' %}" method="post">
+        <form class="site-form" style="width: fit-content;"action="{% url 'accounts:login' %}" method="post">
             <div class="logging-form">
                 {% csrf_token %}
                 {{ form|crispy }}
@@ -17,4 +19,6 @@
     </div>
     <p>Not got an account? <a href="{% url 'accounts:signup' %}"><u>Sign Up</u></a></p>
 </div>
+</div>
+
 {% endblock %}
