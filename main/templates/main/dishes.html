@@ -1,6 +1,6 @@
 {% extends "main/layout.html" %}
 {% block content %}
-<div class="dishes">
+<div class="dishes" style="background: aliceblue;">
     <!--Main layout-->
   <main class="mt-3 pt-4 main">
     <div class="container dark-grey-text">
@@ -12,14 +12,16 @@
           <!--Content-->
           <div class="p-4 content">
             <div class="mt-0">
-                <h2><u>{{ item.title }}</u><span class="badge badge-{{ item.label_colour }} ml-2">{{ item.labels }}</span></h2>
+                <h2><u style="float:left;text-decoration: none;">{{ item.title }}</u><span class="badge badge-{{ item.label_colour }} ml-2" style="float:right;">{{ item.labels }}</span></h2>
             </div>
-            <div class="lead">
+           <br/>
+            <div >
               {% if item.description %}
-              <h5>{{ item.description }}</h5>
+              <h5 style="text-align: initial;font-family: monospace;">{{ item.description }}</h5>
               {% endif %}
-              <h4>{{ item.instructions }}</h4>
+              <h4 style="text-align: initial;font-family: monospace;">{{ item.instructions }}</h4>
             </div>
+            <br/>
             <a href="{% url 'main:add-to-cart' item.slug %}" class="btn btn-primary btn-md my-0 p">Add to cart</a>
           </div>
         </div>
