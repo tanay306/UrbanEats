@@ -7,8 +7,8 @@
                 <h3 class="text-center">Your Cart</h3>
                 {% if cart_items %}
                 <div class="table-responsive">
-                    <table class="table table-light">
-                        <thead>
+                    <table class="table table-striped table-hover">
+                        <thead class="thead-dark">
                         <tr>
                             <th scope="col">Name</th>
                             <th scope="col">Description</th>
@@ -24,7 +24,7 @@
                             <td>{{ cart.item.description }}</td>
                             <td>{{ cart.item.instructions }}</td>
                             <td>{{ cart.item.price }}</td>
-                            <td><a class="btn btn-danger" href="{% url 'main:remove-from-cart' cart.id %}">Delete😢</a></td>
+                            <td><a class="btn btn-outline-danger" href="{% url 'main:remove-from-cart' cart.id %}">Delete</a></td>
                         </tr>
                             {% endfor %}
                         </tbody>
@@ -38,10 +38,10 @@
                 <div class="content-section">
                     <h3 class="text-center">Order Summary</h3>
                       <ul class="list-group">
-                        <li class="list-group-item list-group-item-light text-center text-dark">Total: {{ total }}🤑</li>
-                        <li class="list-group-item list-group-item-light text-center text-dark">Number of Boxes: {{ count }}📦</li>
-                        <li class="list-group-item list-group-item-light text-center text-dark"><a class="btn btn-info text-dark" href="{% url 'main:ordered' %}">Proceed To Checkout🤝</a></li>
-                        <li class="list-group-item list-group-item-light text-center"><a class="btn btn-warning text-dark" href="/">Continue Buying✌️</a></li>
+                        <li class="list-group-item list-group-item-light text-center text-dark">Total: {{ total }} Rs</li>
+                        <li class="list-group-item list-group-item-light text-center text-dark">Number of Boxes: {{ count }}</li>
+                        <li class="list-group-item list-group-item-light text-center text-dark"><a class="btn btn-outline-warning" href="{% url 'main:ordered' %}">Proceed To Checkout</a></li>
+                        <li class="list-group-item list-group-item-light text-center"><a class="btn btn-outline-success" href="/">Continue Buying</a></li>
                       </ul>
                 </div>
             </div>
