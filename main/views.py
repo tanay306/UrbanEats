@@ -13,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .decorators import *
 from django.db.models import Sum
+import matplotlib.pyplot as plt
 
 class MenuListView(ListView):
     model = Item
@@ -170,24 +171,71 @@ def pending_orders(request):
     }
     return render(request, 'main/pending_orders.html', context)
 
+def get_count(user):
+    items = Item.objects.filter(created_by=user)
+    count = {}
+    for i in range(len(items)):
+        p = CartItems.objects.filter(item__created_by=user, ordered=True,item=items[i].id).count()
+        count[items[i].title] = p
+    total = CartItems.objects.filter(item__created_by=user, ordered=True).aggregate(Sum('item__price'))
+    return count, total
+
 @login_required(login_url='/accounts/login/')
 @admin_required
 def admin_dashboard(request):
+    items = Item.objects.filter(created_by=request.user)
     cart_items = CartItems.objects.filter(item__created_by=request.user, ordered=True)
     pending_total = CartItems.objects.filter(item__created_by=request.user, ordered=True,status="Active").count()
     completed_total = CartItems.objects.filter(item__created_by=request.user, ordered=True,status="Delivered").count()
-    count1 = CartItems.objects.filter(item__created_by=request.user, ordered=True,item="3").count()
-    count2 = CartItems.objects.filter(item__created_by=request.user, ordered=True,item="4").count()
-    count3 = CartItems.objects.filter(item__created_by=request.user, ordered=True,item="5").count()
+    count, total = get_count(request.user)
+    x = []
+    y = []
+    for i in count.keys():
+        x.append(i)
+        y.append(count[i])
     total = CartItems.objects.filter(item__created_by=request.user, ordered=True).aggregate(Sum('item__price'))
     income = total.get("item__price__sum")
     context = {
         'pending_total' : pending_total,
         'completed_total' : completed_total,
         'income' : income,
-        'count1' : count1,
-        'count2' : count2,
-        'count3' : count3,
+        'items':items,
     }
     return render(request, 'main/admin_dashboard.html', context)
+
+@login_required(login_url='/accounts/login/')
+@admin_required
+def get_barGraph(request):
+    count, total = get_count(request.user)
+    x = []
+    y = []
+    for i in count.keys():
+        x.append(i)
+        y.append(count[i])
+    data = y
+    labels = x
+    plt.xticks(range(len(data)), labels)
+    plt.xlabel('Items')
+    plt.ylabel('Count')
+    plt.title('Items Ordered')
+    plt.bar(range(len(data)), data) 
+    plt.show()
+    return redirect("main:admin_dashboard")
+
+@login_required(login_url='/accounts/login/')
+@admin_required
+def get_donutGraph(request):
+    count, total = get_count(request.user)
+    x = []
+    y = []
+    for i in count.keys():
+        x.append(i)
+        y.append(count[i])
+    my_circle = plt.Circle((0, 0), 0.7, color='white')
+    plt.pie(y, labels=x, autopct='%1.1f%%')
+    p = plt.gcf()
+    p.gca().add_artist(my_circle)
+    plt.title('Items Ordered')
+    plt.show()
+    return redirect("main:admin_dashboard")
 
