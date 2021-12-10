@@ -3,6 +3,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout
 from .forms import NewUSerForm
 import re
+from django.conf import settings
+from django.core.mail import send_mail
 
 def signup_view(request):
     if request.method == 'POST':
@@ -12,6 +14,11 @@ def signup_view(request):
             form = NewUSerForm(request.POST)
             if form.is_valid():
                 user = form.save()
+                subject = 'welcome to UrbanEats'
+                message = f'Hi {user.username}, thank you for signing up on UrbanEats.'
+                email_from = settings.EMAIL_HOST_USER
+                recipient_list = [user.email, ]
+                send_mail( subject, message, email_from, recipient_list )
                 login(request, user)
                 return redirect('main:home')
             else:

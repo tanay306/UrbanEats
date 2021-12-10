@@ -14,6 +14,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .decorators import *
 from django.db.models import Sum
 import matplotlib.pyplot as plt
+from django.conf import settings
+from django.core.mail import send_mail
 
 class MenuListView(ListView):
     model = Item
@@ -115,6 +117,11 @@ def order_item(request):
     ordered_date=timezone.now()
     cart_items.update(ordered=True,ordered_date=ordered_date)
     messages.info(request, "Item Ordered")
+    subject = 'Thankyou for ordering with UrbanEats'
+    message = f'Hi {request.user.username}, thank you for placing your order with UrbanEats.See your order for more information.'
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = [request.user.email, ]
+    send_mail( subject, message, email_from, recipient_list )
     return redirect("main:order_details")
 
 @login_required
