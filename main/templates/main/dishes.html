@@ -20,6 +20,8 @@
               <h5 style="text-align: initial;font-family: monospace;">{{ item.description }}</h5>
               {% endif %}
               <h4 style="text-align: initial;font-family: monospace;">{{ item.instructions }}</h4>
+              <br>
+              <h4 style="text-align: center;font-family: monospace;">₹ {{ item.price }}</h4>
             </div>
             <br/>
             <a href="{% url 'main:add-to-cart' item.slug %}" class="btn btn-primary btn-md my-0 p">Add to cart</a>
@@ -30,7 +32,7 @@
     </div>
   </main>
   <div class="container">
-    <h1 class="text-center">Reviews</h1>
+    <h1 class="text-center" style="font-family: 'Courier New', Courier, monospace;">Reviews</h1>
     
     <form action="{% url 'main:add_reviews' %}" method="POST" class="mb-3">
       {% csrf_token %}
@@ -57,26 +59,17 @@
     </div>
     {% endfor %} -->
     <div class="container">
-    <h1>Comments</h1>
+    <h1 style="text-align: center; font-family: 'Courier New', Courier, monospace;">Comments</h1>
     {% for review in reviews %}
     <div class="row">
-        <div class="col-lg-12 pb-4">
-           
-            <div class="comment mt-4 text-justify float-left" style=" border: 1px solid rgba(16, 46, 46, 1);
-            background-color: rgba(16, 46, 46, 0.973);
+        <div class="col-lg-12">
+            <div class="comment mt-4 text-justify float-left" style="
             float: left;
-            border-radius: 5px;
-            padding-left: 40px;
-            padding-right: 30px;
-            padding-top: 10px;
-            color:ghostwhite;
+            color:rgb(83, 83, 83);
            "> 
-              <div style="display: flex;
-              align-items: center;">
-              <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
-                <h4 >{{ review.user.username }}</h4> <span> - {{ review.posted_on }}</span> <br>
+              <div style="display: flex; align-items: center;">
+                <span style="font-weight: bold; font-size: medium;">{{ review.user.username }}</span><span style="font-size: medium;">- {{ review.posted_on }}</span>
               </div>
-             <br/>
               <div>
                 <p>{{ review.review }}</p></div>
             </div>
