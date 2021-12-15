@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/"><h3 style="font-family: ui-rounded; color: rgb(83, 83, 83); padding-left: 20px; padding-top: 5px;">Urban Eats</h3></a>
+        <a class="navbar-brand" href="/"><h2 style="font-family: 'Courier New', Courier, monospace; color: rgb(36, 35, 35); padding-left: 20px; padding-top: 5px;">Urban Eats</h3></a>
         <button
             class="navbar-toggler"
             type="button"
@@ -27,29 +27,29 @@
             <ul class="navbar-nav mr-auto">
             </ul>
             <ul class="navbar-nav ml-auto">
-                    <li><a href="{% url 'main:home' %}" class="mr-2 btn btn-outline-secondary" style="color: rgb(41, 40, 40);">Home</a></li>
+                    <li><a href="{% url 'main:home' %}" class="mr-2 btn btn-light" style="font-family: 'Courier New', Courier, monospace; color: rgb(41, 40, 40);">Home</a></li>
                 {% if user.is_authenticated %}
                     {% if request.user|has_group:"admin_owner" %} 
-                        <li><a href="{% url 'main:admin_dashboard' %}" class="mr-2 btn btn-outline-secondary"style="color: aliceblue;">DashBoard</a></li>
+                        <li><a href="{% url 'main:admin_dashboard' %}" class="mr-2 btn btn-light"style="font-family: 'Courier New', Courier, monospace; color: rgb(41, 40, 40);">Dashboard</a></li>
                         <li>
                             <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                                 {% csrf_token %}
-                                <button type="submit" class="mr-2 btn btn-outline-secondary"style="color: aliceblue;">Logout</button>
+                                <button type="submit" class="mr-2 btn btn-light"style="font-family: 'Courier New', Courier, monospace; color: rgb(41, 40, 40);">Logout</button>
                             </form>
                         </li> 
                     {% else %}
-                        <li><a href="{% url 'main:cart' %}" class="mr-2 btn btn-outline-secondary"style="color: rgb(41, 40, 40);">My Cart🛒</a></li>
-                        <li><a href="{% url 'main:order_details' %}" class="mr-2 btn btn-outline-secondary"style="color: aliceblue;">Your Orders</a></li>
+                        <li><a href="{% url 'main:cart' %}" class="mr-2 btn btn-light"style="font-family: 'Courier New', Courier, monospace; color: rgb(41, 40, 40);">My Cart🛒</a></li>
+                        <li><a href="{% url 'main:order_details' %}" class="mr-2 btn btn-light"style="font-family: 'Courier New', Courier, monospace; color: rgb(41, 40, 40);">Your Orders</a></li>
                         <li>
                             <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                                 {% csrf_token %}
-                                <button type="submit" class="mr-2 btn btn-outline-secondary"style="color: rgb(41, 40, 40);">Logout</button>
+                                <button type="submit" class="mr-2 btn btn-light"style="font-family: 'Courier New', Courier, monospace; color: rgb(41, 40, 40);">Logout</button>
                             </form>
                         </li>
                     {% endif %}
                 {% else %}
-                    <li><a href="{% url 'accounts:login' %}" class="mr-2 btn btn-outline-secondary"style="color: rgb(41, 40, 40);">Login</a></li>
-                    <li><a href="{% url 'accounts:signup' %}" class="mr-2 btn btn-outline-secondary"style="color: rgb(41, 40, 40);">SignUp</a></li>
+                    <li><a href="{% url 'accounts:login' %}" class="mr-2 btn btn-light"style="font-family: 'Courier New', Courier, monospace; color: rgb(41, 40, 40);">Login</a></li>
+                    <li><a href="{% url 'accounts:signup' %}" class="mr-2 btn btn-light"style="font-family: 'Courier New', Courier, monospace; color: rgb(41, 40, 40);">SignUp</a></li>
                 {% endif %}
             </ul>
         </div>
