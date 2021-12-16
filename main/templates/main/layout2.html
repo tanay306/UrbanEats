@@ -28,10 +28,11 @@
                   <i class="fa fa-home"></i>
                   <span>Home</span></a>
               </li>
-              <li class="nav-item ml-3 mb-3">
+              <li class="nav-item ml-2">
                 <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                     {% csrf_token %}
-                    <button type="submit" class="mr-2">Logout</button>
+                    <button type="submit" class="btn btn-link" style="color: rgb(209, 208, 208); font-size: 14px;">
+                      <p>Log Out</p></button>
                 </form>
               </li>
               <hr class="sidebar-divider my-0">
@@ -39,9 +40,9 @@
               <div class="sidebar-heading">
                 Admin Interface
               </div>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="{% url 'main:admin_dashboard' %}">
-                  <i class="fa fa-bandcamp"></i>
+                  <i class="fa fa-plus"></i>
                   <span>Dashboard</span></a>
               </li>
               <li class="nav-item">
@@ -72,9 +73,9 @@
         </ul>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                <h2 class="text-center">AdminPage</h3>
-                </nav>
+              <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="display: flex; justify-content: center;">
+                <h2 style="font-family: 'Courier New', Courier, monospace;">AdminPage</h3>
+              </nav>
                 <div class="container-fluid">
                     {% block content %}{% endblock %}
                 </div>
