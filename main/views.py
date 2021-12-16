@@ -44,6 +44,18 @@ def add_reviews(request):
         messages.success(request, "Thankyou for reviewing this product!!")
     return redirect(f"/dishes/{item.slug}")
 
+# def add_instruction(request):
+#     if request.method == "POST":
+#         user = request.user
+#         rslug = request.POST.get("rslug")
+#         item = Item.objects.get(slug=rslug)
+#         review = request.POST.get("instruction")
+
+#         reviews = Reviews(user=user, item=item, review=review, rslug=rslug)
+#         reviews.save()
+#         messages.success(request, "Instructions added!!")
+#     return redirect(f"/dishes/{item.slug}")
+
 class ItemCreateView(LoginRequiredMixin, CreateView):
     model = Item
     fields = ['title', 'image', 'description', 'price', 'instructions', 'labels', 'label_colour', 'slug']

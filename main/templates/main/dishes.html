@@ -19,7 +19,7 @@
               {% if item.description %}
               <h5 style="text-align: initial;font-family: monospace;">{{ item.description }}</h5>
               {% endif %}
-              <form action="{% url 'main:add_instructions' %}" method="POST" class="mb-3">
+              <!-- <form action="{% url 'main:add_instructions' %}" method="POST" class="mb-3">
                 {% csrf_token %}
                 <div class="row">
                   <div class="col-sm-11">
@@ -30,7 +30,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </div>
                 </div>
-              </form>
+              </form> -->
               <h4 style="text-align: initial;font-family: monospace;">{{ item.instructions }}</h4>
               <br>
               <h4 style="text-align: center;font-family: monospace;">₹ {{ item.price }}</h4>
