@@ -1,23 +1,27 @@
 {% extends "main/layout.html" %}
 {% load crispy_forms_tags %} 
-{% block content %}
-<div class="container" style="display: flex;justify-content: center;">
-    <div>
-    <h1 style="
-    text-align: center;">Login</h1>
+{% block content %} 
+<div class="container" style="justify-content: center; padding-left: 15%; padding-right: 15%;">
+    <div class="card" style="padding: 40px; margin-top: 50px; border: 1px solid #41ff30;">
+    <h1 style="text-align: center; font-family: 'Courier New', Courier, monospace;">Log In</h1>
     <div class="form-border">
-        <form class="site-form" style="width: fit-content;"action="{% url 'accounts:login' %}" method="post">
+        <form class="site-form" style="width: 100%;"action="{% url 'accounts:login' %}" method="post">
             <div class="logging-form">
                 {% csrf_token %}
                 {{ form|crispy }}
                 {% if request.GET.next %}
                 <input type="hidden" name="next" value="{{ request.GET.next }}">
                 {% endif %}
-                <input type="submit" value="Login" class="btn" />
+                <div class="text-center" style="padding-top: 5px;">
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>
             </div>
         </form>
     </div>
-    <p>Not got an account? <a href="{% url 'accounts:signup' %}"><u>Sign Up</u></a></p>
+    <br>
+    <div class="float-left">
+        <p><a href="{% url 'accounts:signup' %}">Create Account</a></p>
+    </div>
 </div>
 </div>
 

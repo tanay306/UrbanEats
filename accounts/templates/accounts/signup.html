@@ -1,16 +1,21 @@
 {% extends "main/layout.html" %}
 {% load crispy_forms_tags %} 
 {% block content %}
-<div class="container"  style="display: flex;justify-content: center;">
-    <div>
-    <h1 style="
-    text-align: center;">Signup</h1>
+<div class="container" style="justify-content: center; padding-left: 15%; padding-right: 15%;">
+    <div class="card" style="padding: 40px; margin-top: 50px; border: 1px solid #41ff30; margin-bottom: 50px;">
+    <h1 style="text-align: center; font-family: 'Courier New', Courier, monospace;">Sign Up</h1>
     <div class="form-border">
         <form class="site-form" action="{% url 'accounts:signup' %}" method="post">
             {% csrf_token %}
             {{ form|crispy }}
-            <input type="submit" value="Signup" class="btn">
+            <div class="text-center" style="padding-top: 5px;">
+                <input type="submit" value="Signup" class="btn btn-primary">
+            </div>
         </form>
+    </div>
+    <br>
+    <div class="float-left">
+        <p><a href="{% url 'accounts:login' %}">Sign in instead</a></p>
     </div>
 </div>
 </div>
