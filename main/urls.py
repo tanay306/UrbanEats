@@ -37,6 +37,7 @@ urlpatterns = [
     path('admin_dashboard/', views.admin_dashboard, name='admin_dashboard'),
     path('update_status/<int:pk>', views.update_status, name='update_status'),
     path('postReview', views.add_reviews, name='add_reviews'),
+    # path('postInstruction', views.add_instruction, name='add_instruction'),
     path('get_barGraph', views.get_barGraph, name='get_barGraph'),
     path('get_donutGraph', views.get_donutGraph, name='get_donutGraph'),
 ]

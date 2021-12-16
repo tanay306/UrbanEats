@@ -19,6 +19,18 @@
               {% if item.description %}
               <h5 style="text-align: initial;font-family: monospace;">{{ item.description }}</h5>
               {% endif %}
+              <form action="{% url 'main:add_instructions' %}" method="POST" class="mb-3">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-sm-11">
+                    <input type="text" name="instructions" class="form-control" placeholder="Enter additional instructions">
+                    <input type="hidden" name="rslug" class="form-control" value="{{item.slug}}">
+                  </div>
+                  <div class="col-sm-1">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </form>
               <h4 style="text-align: initial;font-family: monospace;">{{ item.instructions }}</h4>
               <br>
               <h4 style="text-align: center;font-family: monospace;">₹ {{ item.price }}</h4>
