@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-9 mt-5">
-                <h3 class="text-center">Your Cart</h3>
+                <h3 class="text-center" style="font-family: 'Courier New', Courier, monospace;">Your Cart</h3>
                 {% if cart_items %}
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
@@ -31,17 +31,17 @@
                     </table>
                 </div>
                 {% else %}
-                <h4 class="text-center">Sorry, your cart is empty..Please add items!!!</h4>
+                <h4 class="text-center" style="font-family: 'Courier New', Courier, monospace;">Sorry, your cart is empty..Please add items!!!</h4>
                 {% endif %}
             </div>
             <div class="col-sm-3 mt-5 mb-3">
                 <div class="content-section">
-                    <h3 class="text-center">Order Summary</h3>
+                    <h3 class="text-center" style="font-family: 'Courier New', Courier, monospace;">Order Summary</h3>
                       <ul class="list-group">
                         <li class="list-group-item list-group-item-light text-center text-dark">Total: {{ total }} Rs</li>
                         <li class="list-group-item list-group-item-light text-center text-dark">Number of Items: {{ count }}</li>
-                        <li class="list-group-item list-group-item-light text-center text-dark"><a class="btn btn-outline-warning" href="{% url 'main:ordered' %}">Proceed To Checkout</a></li>
-                        <li class="list-group-item list-group-item-light text-center"><a class="btn btn-outline-success" href="/">Continue Buying</a></li>
+                        <li class="list-group-item list-group-item-light text-center text-dark"><a class="btn btn-light text-success" href="{% url 'main:ordered' %}">Proceed To Checkout</a></li>
+                        <li class="list-group-item list-group-item-light text-center"><a class="btn btn-light text-info" href="/">Continue Buying</a></li>
                       </ul>
                 </div>
             </div>
