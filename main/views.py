@@ -181,7 +181,7 @@ def update_status(request,pk):
     delivery_date=timezone.now()
     if status == 'Delivered':
         cart_items.update(status=status, delivery_date=delivery_date)
-    return render(request, 'main/pending_orders.html')
+    return redirect("main:pending_orders")
 
 @login_required(login_url='/accounts/login/')
 @admin_required
