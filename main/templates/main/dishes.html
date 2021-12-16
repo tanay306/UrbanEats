@@ -20,9 +20,7 @@
               <h5 style="text-align: initial;font-family: monospace;">{{ item.description }}</h5>
               {% endif %}
               
-              <h4 style="text-align: initial;font-family: monospace;">{{ item.instructions }}</h4>
-              <br>
-              <h4 style="text-align: center;font-family: monospace;">₹ {{ item.price }}</h4>
+              <!-- <h4 style="text-align: initial;font-family: monospace;">{{ item.instructions }}</h4> -->
             </div>
             <br/>
             <form action="{% url 'main:add-to-cart' item.slug %}" method="POST" class="mb-3">
@@ -31,8 +29,14 @@
                 <div class="col-sm-11">
                   <input type="text" name="instructions" class="form-control" placeholder="Enter additional instructions">
                 </div>
-                <div class="col-sm-1">
-                  <button type="submit" class="btn btn-primary btn-md my-0 p">Add to cart</button>
+                <br>
+                <div style="padding-top: 20px;" class="row">
+                  <div class="col-sm">
+                    <h5 style="text-align: center;font-family: monospace;">₹ {{ item.price }}</h5>
+                  </div>
+                  <div class="col-sm">
+                    <button type="submit" class="btn btn-primary btn-md my-0 p">Add to cart</button>
+                  </div>
                 </div>
               </div>
             </form>
