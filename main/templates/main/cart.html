@@ -22,7 +22,7 @@
                         <tr>
                             <td>{{ cart.item.title }} <span class="badge badge-{{ cart.item.label_colour }}">{{ cart.item.labels }}</span></td>
                             <td>{{ cart.item.description }}</td>
-                            <td>{{ cart.item.instructions }}</td>
+                            <td>{{ cart.instructions }}</td>
                             <td>{{ cart.item.price }}</td>
                             <td><a class="btn btn-outline-danger" href="{% url 'main:remove-from-cart' cart.id %}">Delete</a></td>
                         </tr>
