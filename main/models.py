@@ -71,6 +71,7 @@ class CartItems(models.Model):
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    instructions = models.CharField(max_length=250,default="")
     ordered = models.BooleanField(default=False)
     quantity = models.IntegerField(default=1)
     ordered_date = models.DateField(default=timezone.now)

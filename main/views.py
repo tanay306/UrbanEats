@@ -91,8 +91,10 @@ class ItemDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 @login_required
 def add_to_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
+    instructions = request.POST.get("instructions")
     cart_item = CartItems.objects.create(
         item=item,
+        instructions=instructions,
         user=request.user,
         ordered=False,
     )
