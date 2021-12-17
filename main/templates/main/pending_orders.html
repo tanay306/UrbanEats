@@ -7,7 +7,7 @@
                 {% if items %}
                 <div class="table-responsive">
                     <table class="table table-light table-striped table-hover" >
-                        <thead class="thead-dark">
+                        <thead>
                         <tr>
                             <th scope="col" width="2%">Order No.</th>
                             <th scope="col" width="5%">User</th>
@@ -26,18 +26,18 @@
                             <td>{{ item.user.username }}</td>
                             <td>{{ item.item.title }} <span class="badge badge-{{ item.item.label_colour }}">{{ item.item.labels }}</span></td>
                             <td>{{ item.item.description }}</td>
-                            <td>{{ item.item.instructions }}</td>
+                            <td>{{ item.instructions }}</td>
                             <td>{{ item.item.price }}</td>
                             <td>{{ item.status }}</td>
                             <td>
-                                <form method="POST" action="{% url 'main:update_status' item.id %}" style="display: flex;">
+                                <form method="POST" action="{% url 'main:update_status' item.id %}" style="display: flex; width: 225px;">
                                     {% csrf_token %}
                                     <select class="form-control" name="status">
                                         <option value="Active" selected="selected">Active</option>
                                         <option value="Delivered">Cancelled</option>
                                         <option value="Delivered">Delivered</option>
                                     </select>
-                                    <button type="submit" class="btn btn-small btn-light text-danger">Change</button>
+                                    <button type="submit" class="btn btn-small btn-light text-danger" style="margin-left: 10px;">Change</button>
                                 </form>
                             </td>
                         </tr>
@@ -46,7 +46,7 @@
                     </table>
                 </div>
                 {% else %}
-                <h4 class="text-center">Sorry, you have not ordered any item yet!!!</h4>
+                <h4 class="text-center">No items yet!!</h4>
                 {% endif %}
             </div>
         </div>

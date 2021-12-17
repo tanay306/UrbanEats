@@ -162,7 +162,7 @@
                 {% if items %}
                 <div class="table-responsive">
                     <table class="table table-light table-striped table-hover">
-                        <thead class="thead-dark">
+                        <thead>
                         <tr>
                             <th scope="col">Item No.</th>
                             <th scope="col">Title</th>
@@ -181,8 +181,6 @@
                             <td>{{ item.description }}</td>
                             <td>{{ item.instructions }}</td>
                             <td>{{ item.price }}</td>
-                            <!-- <td><a class="btn btn-success" href="{% url 'main:item-update' item.slug %}">Update</a></td>
-                            <td><a class="btn btn-danger" href="{% url 'main:item-delete' item.slug %}">Delete</a></td> -->
                             <td><a class="nav-link" href="{% url 'main:item-update' item.slug %}"><i class="fa fa-home"></i> <span class="text-success">Update</span></a></td>
                             <td><a class="nav-link" href="{% url 'main:item-delete' item.slug %}"><i class="fa fa-home"></i> <span class="text-danger">Delete</span></a></td>
                         </tr>
