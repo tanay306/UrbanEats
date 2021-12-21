@@ -16,7 +16,6 @@ class ItemAdmin(admin.ModelAdmin):
     ]
     list_display = ('id','created_by','title','description','price','labels')
     list_filter = ('created_by','labels')
-    search_fields = ('created_by','labels')
 
 class CartItemsAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -30,7 +29,6 @@ class CartItemsAdmin(admin.ModelAdmin):
 class ReviewsAdmin(admin.ModelAdmin):
     list_display = ('user','item','review','posted_on')
     list_filter = ('item__title', 'user')
-    search_fields = ('item__title', 'user')
 
 admin.site.register(Item,ItemAdmin)
 admin.site.register(CartItems,CartItemsAdmin)
