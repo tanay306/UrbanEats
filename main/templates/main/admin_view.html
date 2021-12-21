@@ -7,7 +7,7 @@
                 <h3 class="text-center" style="font-family: 'Courier New', Courier, monospace;">Completed Orders</h3>
                 {% if cart_items %}
                 <div class="table-responsive">
-                    <table class="table table-light">
+                    <table class="table table-light table-striped table-hover">
                         <thead>
                         <tr>
                             <th scope="col">Order No.</th>
@@ -29,7 +29,7 @@
                             <td>{{ cart.user.email}}</td>
                             <td>{{ cart.item.title }} <span class="badge badge-{{ cart.item.label_colour }}">{{ cart.item.labels }}</span></td>
                             <td>{{ cart.item.description }}</td>
-                            <td>{{ cart.item.instructions }}</td>
+                            <td>{{ cart.instructions }}</td>
                             <td>{{ cart.item.price }}</td>
                             <td>{{ cart.status }}</td>
                             <td>{{ cart.delivery_date }}</td>
